@@ -1,0 +1,18 @@
+---
+- name: service check
+  hosts: all
+  vars:
+    - hostname: "{{ ansible_hostname }}"
+  tasks:
+    - name: get the result
+      shell: 'ls /root'
+      register: result
+    - name: set variable
+      set_fact:
+        rc: "{{ result }}"
+    - name: create html from template
+      template:
+        src: svc_result.html.j2
+        dest: svc_result.html
+      delegate_to: localhost
+      run_once: yes

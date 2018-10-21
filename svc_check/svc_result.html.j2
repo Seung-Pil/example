@@ -1,0 +1,16 @@
+<html>
+	<body>
+		<table>
+                                <tr>
+                                <td> 호스트 이름 </td>
+                                <td> 결과 </td>
+                                </tr>
+				{% for host in ansible_play_hosts %}
+				<tr>
+					<td> {{ hostvars[host]['ansible_hostname'] }} </td> 
+					<td> {{ hostvars[host]['rc'] }} </td> 
+				</tr>
+				{% endfor %}
+		</table>
+	</body>
+</html>

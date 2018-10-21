@@ -1,0 +1,24 @@
+[db]
+{% for host in ansible_play_hosts %}
+{% if hostvars[host]['db_group'] == '1' %}
+{{ hostvars[host]['ansible_hostname'] }}
+{% else %}
+{% endif %}
+{% endfor %}
+
+[was]
+{% for host in ansible_play_hosts %}
+{% if hostvars[host]['was_group'] == '1' %}
+{{ hostvars[host]['ansible_hostname'] }}
+{% else %}
+{% endif %}
+{% endfor %}
+
+[web]
+{% for host in ansible_play_hosts %}
+{% if hostvars[host]['web_group'] == '1' %}
+{{ hostvars[host]['ansible_hostname'] }}
+{% else %}
+{% endif %}
+{% endfor %}
+
